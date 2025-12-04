@@ -7,13 +7,12 @@ plugins {
 
 android {
     namespace = "com.encryptedsharedprefrencesdemo"
-    compileSdk = 34
-    buildToolsVersion = "33.0.1"
 
     defaultConfig {
         applicationId = "com.encryptedsharedprefrencesdemo"
         minSdk = 24
-        targetSdk = 33
+        compileSdk = 36
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -39,21 +38,21 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.core:core-ktx:1.17.0")
+    implementation("androidx.appcompat:appcompat:1.7.1")
+    implementation("com.google.android.material:material:1.13.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.2.1")
     testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    androidTestImplementation("androidx.test.ext:junit:1.3.0")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.7.0")
 
     // Crypto Tink
-    implementation("com.google.crypto.tink:tink-android:1.8.0")
+    implementation("com.google.crypto.tink:tink-android:1.19.0")
     // Android Security
     implementation("androidx.security:security-crypto:1.1.0-alpha06")
 
     // Hilt
-    implementation("com.google.dagger:hilt-android:2.50")
-    kapt("com.google.dagger:hilt-android-compiler:2.50")
+    implementation("com.google.dagger:hilt-android:2.57.2")
+    kapt("com.google.dagger:hilt-android-compiler:2.57.2")
     implementation("com.jakewharton.timber:timber:5.0.1")
 }
