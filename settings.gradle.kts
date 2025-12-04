@@ -14,4 +14,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Encrypted Shared Prefrences Demo"
-include ':app'
+include(":app")

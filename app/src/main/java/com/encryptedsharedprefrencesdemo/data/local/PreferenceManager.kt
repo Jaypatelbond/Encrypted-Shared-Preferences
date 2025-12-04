@@ -1,8 +1,7 @@
-import com.encryptedsharedprefrencesdemo.data.local.EncryptedPreferences
-import com.encryptedsharedprefrencesdemo.data.local.Preference
+package com.encryptedsharedprefrencesdemo.data.local
 
 class PreferenceManager(
-    private val sharedPreferences: EncryptedPreferences
+    private val sharedPreferences: EncPref
 ) : Preference {
 
     companion object {
@@ -20,7 +19,6 @@ class PreferenceManager(
 
     override fun setUserId(customerId: String) {
         sharedPreferences.putString(USER_ID, customerId)
-
     }
 
     override fun getUserId(): String {

@@ -1,9 +1,9 @@
 package com.encryptedsharedprefrencesdemo.di
 
-import PreferenceManager
 import android.content.Context
-import com.encryptedsharedprefrencesdemo.data.local.EncryptedPreferences
+import com.encryptedsharedprefrencesdemo.data.local.EncPref
 import com.encryptedsharedprefrencesdemo.data.local.Preference
+import com.encryptedsharedprefrencesdemo.data.local.PreferenceManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,21 +15,29 @@ import javax.inject.Singleton
 @Module
 class AppModule {
 
-    // Provides an instance of EncPref for encrypted shared preferences
+    /**
+     * Provides an instance of [EncPref] for encrypted shared preferences.
+     *
+     * @param context The application context.
+     * @return An instance of [EncPref].
+     */
     @Singleton
     @Provides
-    fun provideAppEncSharedPref(@ApplicationContext context: Context): EncryptedPreferences {
-        return EncryptedPreferences.Builder()
-            .setPrefName(context.packageName) // Set the name for the shared preferences
-            .setContext(context) // Set the context
-            //.setDebuggable(BuildConfig.DEBUG) // Set the debuggable flag based on the build configuration
-            .build() // Build the EncPref instance
+    fun provideAppEncSharedPref(@ApplicationContext context: Context): EncPref {
+        return EncPref(context = context)
     }
 
-    // Provides an instance of Preference using EncPref and the application context
+    /**
+     * Provides an instance of [Preference] and the application context.
+     *
+     * @param context The application context.
+     * @return An instance of [Preference].
+     */
     @Singleton
     @Provides
-    fun provideAppPreference(encPref: EncryptedPreferences, @ApplicationContext context: Context): Preference {
-        return PreferenceManager(encPref)
+    fun provideAppPreference(@ApplicationContext context: Context): Preference {
+        return PreferenceManager(
+            provideAppEncSharedPref(context = context)
+        )
     }
 }
